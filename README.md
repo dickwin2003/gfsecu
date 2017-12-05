@@ -1,6 +1,7 @@
-"# gfsecu" 
 # gfsecu
 下载src和pom.xml即可 该项目为maven项目 myeclipse下载后pom.xml自动下载所需要的jar包
+
+
 1>
 数据库配置文件在：gfsecu\src\main\resources
 安装好他们要求的postgresql数据库 我这里安装的是9.4可以咨询他们需要安装哪个版本
@@ -18,5 +19,7 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 
 
 查看接口信息：http://localhost:8080/swagger/index.html
+
 以及测试接口:http://localhost:8080/getUserInfo
+
 http://localhost:8080/hello
