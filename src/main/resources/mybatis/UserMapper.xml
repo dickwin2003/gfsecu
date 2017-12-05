@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lvyuan.mapper.UserMapper">
+ 
+  <select id="findUserInfo" resultType="java.util.HashMap">
+       select * from client_info b where 1=1
+		<if test="username !=null and username !=''">
+		  and b.username =#{username}
+		</if>
+		<if test="password !=null and password !=''">
+		  and b.password =#{password}
+		</if>
+		<if test="id !=null and id !=''">
+		  and b.id =#{id}
+		</if>
+  </select>
+ 
+</mapper>
