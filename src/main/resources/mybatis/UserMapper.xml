@@ -15,4 +15,14 @@
 		</if>
   </select>
  
+   <select id="findUser" resultType="java.util.HashMap">
+       select * from client_info b where id=1
+  </select>
+  
+  <select id="findUserList" resultType="java.util.HashMap">
+       select * from client_info b where 1=1
+		<if test="id !=null and id !=''">
+		  and b.id =#{id}
+		</if>
+  </select>
 </mapper>

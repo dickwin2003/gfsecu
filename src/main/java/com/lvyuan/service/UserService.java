@@ -15,8 +15,15 @@ public class UserService {
 
     public List getUserInfo(Map paramMap){
         List user=userMapper.findUserInfo(paramMap);
-        //User user=null;
         return user;
     }
-
+    public List getUser(Map paramMap){
+        List user=userMapper.findUser(paramMap);
+        return user;
+    }
+    
+    public List getUserList(Map paramMap){
+        List user=userMapper.findUserList(paramMap);
+        return user;
+    }
 }

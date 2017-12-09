@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lvyuan.service.UserService;
+import com.lvyuan.vo.Result;
 
 @Controller
 public class UserController {
@@ -24,22 +25,28 @@ public class UserController {
     @RequestMapping("/getUserInfo")
     @ResponseBody
     
-    public Map getUserInfo(@RequestParam(value="username", required=false) String username,@RequestParam(value="password", required=false) String password,@RequestParam(value="id", required=false) String id) {
+    public Result getUserInfo(@RequestParam(value="username", required=false) String username,@RequestParam(value="password", required=false) String password,@RequestParam(value="id", required=false) String id) {
     	Map paramMap = new HashMap();
     	paramMap.put("username",username);
     	paramMap.put("password",password);
     	paramMap.put("id",id);
     	
-        HashMap result = new HashMap();
+    	Result result = new Result(1, 0, null);
 		try {
 			List userlist = userService.getUserInfo(paramMap);
-			result.put("data",userlist ); 
-			result.put("len",userlist.size());  
-			result.put("ret", 0);  
+			List userlist2 = userService.getUser(paramMap);
+			List userlist3 = userService.getUserList(paramMap);
+			
+			Map data = new HashMap();
+			data.put("bar", userlist);
+			data.put("pic", userlist2);
+			data.put("user3", userlist3);
+			
+			result.setData(data);
+			result.setRet(0);
+			result.setSize(userlist.size() );  
 		} catch (Exception e) {
 			logger.error(e.getLocalizedMessage(), e);
-			result.put("data", "获取信息失败！");
-			result.put("ret", "1");
 		}
         return result;
     }
